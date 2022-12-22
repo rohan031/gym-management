@@ -1,12 +1,20 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 const path = require("path");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.DB_URI);
+const connectDB = async () => {
+	try {
+		const conn = await mongoose.connect(process.env.DB_URI);
+		console.log(`MongoDB Connected: ${conn.connection.host}`);
+	} catch (error) {
+		console.log(error);
+		process.exit(1);
+	}
+};
 
 app.use(express.static("client/build"));
 
@@ -22,10 +30,9 @@ app.get("/", (req, res) => {
 app.use("/login", login);
 app.use("/members", members);
 
-app.listen(PORT, (err) => {
-	if (err) {
-		console.log("Error starting server, ", err);
-	} else {
-		console.log("Server is running on PORT:", PORT);
-	}
+//Connect to the database before listening
+connectDB().then(() => {
+	app.listen(PORT, () => {
+		console.log("listening for requests");
+	});
 });
