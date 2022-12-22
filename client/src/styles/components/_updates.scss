@@ -1,0 +1,99 @@
+@use "../abstracts" as ab;
+
+.updates {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+
+	&-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+
+		@include ab.screen-40 {
+			max-height: 35rem;
+			overflow-y: scroll;
+		}
+
+		background-color: lighten(ab.$background-secondary, 8);
+		padding-inline: 0.3em;
+		padding-block: 1em 0.5em;
+		border-radius: 0.6em;
+
+		&__head {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.5em;
+
+			h3 {
+				display: none;
+				font-size: clamp(1rem, 5vw, 1.2rem);
+				width: 33.33%;
+				text-align: center;
+
+				@include ab.screen-55 {
+					display: block;
+					width: 16.66%;
+				}
+
+				&.show {
+					display: block;
+				}
+			}
+		}
+
+		&__item {
+			display: flex;
+			justify-content: space-between;
+
+			p {
+				display: none;
+				font-size: clamp(0.9rem, 4vw, 1.1rem);
+				width: 33.33%;
+				text-align: center;
+
+				@include ab.screen-55 {
+					display: block;
+					width: 16.66%;
+				}
+
+				&.show {
+					display: block;
+				}
+
+				&.Active {
+					color: ab.$success;
+				}
+
+				&.Due {
+					color: ab.$warning;
+				}
+
+				&.Expired {
+					color: ab.$error;
+				}
+			}
+		}
+
+		&.empty {
+			justify-content: center;
+			align-items: center;
+			min-height: 30rem;
+			background-color: transparent;
+
+			font-size: 1.4rem;
+			font-weight: 500;
+		}
+	}
+
+	select {
+		font-weight: 500;
+		background-color: lighten(ab.$background-secondary, 8);
+		color: ab.$accent;
+		border: none;
+		padding-block: 0.5em;
+		padding-inline: 0.6em;
+		border-radius: 0.6em;
+		margin-left: auto;
+	}
+}

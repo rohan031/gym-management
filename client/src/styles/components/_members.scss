@@ -1,0 +1,82 @@
+@use "../abstracts" as ab;
+
+.members {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+	padding-block: 0.5em;
+
+	&-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+
+		@include ab.screen-40 {
+			max-height: 35rem;
+			overflow-y: scroll;
+		}
+
+		background-color: lighten(ab.$background-secondary, 8);
+		padding-inline: 0.3em;
+		padding-block: 1em 0.5em;
+		border-radius: 0.6em;
+
+		&__head {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.5em;
+
+			h3 {
+				font-size: clamp(1rem, 5vw, 1.2rem);
+				width: 33%;
+				text-align: center;
+
+				&.hide {
+					display: none;
+
+					@include ab.screen-55 {
+						display: block;
+					}
+				}
+
+				@include ab.screen-55 {
+					width: 25%;
+				}
+			}
+		}
+
+		&__item {
+			display: flex;
+			justify-content: space-between;
+
+			p {
+				font-size: clamp(0.9rem, 4vw, 1.1rem);
+				width: 33%;
+				text-align: center;
+
+				&.hide {
+					display: none;
+
+					@include ab.screen-55 {
+						display: block;
+					}
+				}
+
+				@include ab.screen-55 {
+					width: 25%;
+				}
+			}
+		}
+
+		&.empty {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 30rem;
+			background-color: transparent;
+
+			font-size: 1.4rem;
+			font-weight: 500;
+		}
+	}
+}

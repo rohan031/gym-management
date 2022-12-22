@@ -1,0 +1,125 @@
+@use "../abstracts" as ab;
+
+.member-info {
+	&.not-found {
+		min-height: 30rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	&__details {
+		display: flex;
+		flex-direction: column;
+		margin-block: 2em;
+		gap: 2em;
+
+		&-item {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+
+			h3 {
+				font-size: clamp(1.2rem, 5vw, 1.4rem);
+				width: 8rem;
+			}
+
+			p {
+				font-size: clamp(1rem, 5vw, 1.2rem);
+				width: 8rem;
+				text-align: right;
+
+				&.Active {
+					color: ab.$success;
+				}
+
+				&.Due {
+					color: ab.$warning;
+				}
+
+				&.Expired {
+					color: ab.$error;
+				}
+			}
+		}
+
+		.increase {
+			// justify-content: center;
+			// gap: 2em;
+
+			input {
+				outline: 0.2em solid transparent;
+				border: none;
+				border-radius: 0.4em;
+				font-size: 1.1rem;
+				max-width: 100%;
+				padding-inline: 0.6em;
+				padding-block: 0.2em;
+				width: clamp(8rem, 20vw, 12rem);
+
+				transition: outline-color 0.3s ease-in;
+
+				&:invalid {
+					outline-color: ab.$error;
+				}
+
+				&:focus {
+					outline-color: ab.$accent;
+				}
+			}
+
+			button {
+				color: ab.$text-primary;
+				background-color: ab.$accent;
+				cursor: pointer;
+				width: 8rem;
+
+				border: none;
+				outline: none;
+				border-radius: 0.6em;
+				font-size: 1.2rem;
+				font-weight: 500;
+				padding-block: 0.2em;
+
+				&:hover {
+					background-color: lighten(ab.$accent, 5);
+				}
+
+				&:active {
+					background-color: darken(ab.$accent, 5);
+				}
+			}
+		}
+
+		.delete {
+			border: none;
+			outline: none;
+			background-color: ab.$error;
+			color: ab.$text-primary;
+
+			border-radius: 0.6em;
+			padding-block: 0.2em;
+			padding-inline: 1.5em;
+
+			font-size: 1.2rem;
+			font-weight: 500;
+			cursor: pointer;
+
+			margin-inline: auto;
+
+			transition: background-color 0.3s ease-in;
+
+			&:hover {
+				background-color: lighten(ab.$error, 10);
+			}
+
+			&:active {
+				background-color: darken(ab.$error, 10);
+			}
+		}
+	}
+}

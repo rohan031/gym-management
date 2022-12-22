@@ -1,0 +1,29 @@
+@use "../abstracts" as ab;
+
+.alert {
+	background-color: rgba(ab.$success, 0.8);
+	backdrop-filter: blur(0.2em);
+	border-radius: 0.6em;
+	position: fixed;
+	top: 0;
+	padding-block: 1em;
+	padding-inline: 1.2em;
+	left: 50%;
+	translate: -50% 20%;
+	width: clamp(16rem, 80vw, 20rem);
+
+	&.error {
+		background-color: rgba(ab.$error, 0.8);
+	}
+
+	h3 {
+		margin-bottom: 0.5em;
+		text-align: center;
+		font-size: 1.3rem;
+	}
+
+	p {
+		font-size: 1.1rem;
+		font-weight: 500;
+	}
+}

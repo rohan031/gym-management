@@ -1,0 +1,65 @@
+@use "../abstracts" as ab;
+
+.options {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	max-width: 100%;
+
+	input {
+		outline: none;
+		border: none;
+		border-radius: 0.3em;
+		// max-width: 12rem;
+
+		width: clamp(11rem, 50vw, 18rem);
+
+		font-size: 1rem;
+		padding-inline: 0.4em;
+		padding-block: 0.2em;
+
+		font-weight: 500;
+		outline: 0.15em solid transparent;
+
+		transition: outline-color 0.25s ease-in;
+
+		&:focus {
+			outline-color: ab.$accent;
+		}
+
+		&:invalid {
+			outline-color: ab.$error;
+		}
+
+		&.input-error {
+			outline-color: ab.$error;
+		}
+	}
+
+	a {
+		font-size: 1.1rem;
+		margin-left: auto;
+
+		color: ab.$text-primary;
+		text-decoration-color: transparent;
+
+		transition: text-decoration-color 0.3s ease-in,
+			background-color 0.3s ease-in;
+		font-weight: 600;
+
+		background-color: ab.$accent;
+		padding-inline: 0.6em;
+		border-radius: 0.3em;
+		padding-block: 0.1em;
+
+		&:hover {
+			text-decoration-color: ab.$text-primary;
+			background-color: lighten(ab.$accent, 5);
+		}
+
+		&:active {
+			text-decoration-color: ab.$text-primary;
+			background-color: darken(ab.$accent, 5);
+		}
+	}
+}
