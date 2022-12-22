@@ -16,7 +16,7 @@ app.use(express.json());
 const login = require("./routes/login");
 const members = require("./routes/member");
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 app.use("/login", login);

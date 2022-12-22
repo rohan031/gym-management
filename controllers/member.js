@@ -4,8 +4,6 @@ const { all } = require("../routes/login");
 const createMember = async (req, res) => {
 	const { id, name, plan, contact, duration } = req.body;
 
-	console.log(req.body);
-
 	if (!id || !name || !plan || !contact || !duration) {
 		return res.status(400).json({
 			status: false,
@@ -130,8 +128,6 @@ const updateDuration = async (req, res) => {
 	let endDate = new Date();
 
 	endDate.setDate(endDate.getDate() + duration);
-	console.log(duration);
-	console.log(endDate);
 
 	member.endDate = endDate;
 
